@@ -12,14 +12,23 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,900&display=swap"
       rel="stylesheet"
     />
+    
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrap">
       <nav>
-        <a class="logo" href="#top">Web Portfolio</a>
+        <a class="logo" href="#top">Ben Magsakay</a>
         <a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#contact">Contact</a>
+        <button class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Switch between Dark and Light mode"
+        ></button>
       </nav>
+
 
       <main id="top">
         <div class="hero">
@@ -127,5 +136,21 @@
 
       <footer>© 2026 Christian Reiven Magsakay.</footer>
     </div>
+
+    <script>
+      const toggle = document.getElementById("theme-toggle");
+
+      function showLabel(){
+        const isDark = document.documentElement.dataset.theme === "dark";
+        toggle.textContent = isDark ? "☀" : "☾";
+      }
+
+      toggle.addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+        showLabel();
+      });
+    </script>
   </body>
 </html>
