@@ -1,0 +1,396 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #f1f1f3;
+  --ink: #15151e;
+  --muted: #5d5d66;
+  --line: #d6d6db;
+  --red: #e10600;
+  --yellow: #e8b800;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15151e;
+    --surface: #1f1f2b;
+    --ink: #f4f4f6;
+    --muted: #a2a2ad;
+    --line: #383844;
+    --yellow: #ffd12e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--red);
+}
+
+nav .logo {
+  margin-right: auto;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 900;
+}
+
+nav .logo::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 18px;
+  margin-right: 8px;
+  background: var(--red);
+  transform: skewX(-18deg);
+}
+
+.hero {
+  padding: 80px 0 96px;
+}
+
+.hero h1 {
+  font-size: 6rem;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--red);
+}
+
+.hero p {
+  max-width: 540px;
+  margin: 24px 0 32px;
+  font-size: 2rem;
+}
+
+.lights {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.lights i {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  animation-name: light;
+  animation-timing-function: steps(1);
+  animation-fill-mode: forwards;
+}
+
+.lights i:nth-child(1) {
+  animation-delay: 0s;
+  animation-duration: 3.6s;
+}
+.lights i:nth-child(2) {
+  animation-delay: 0.6s;
+  animation-duration: 3s;
+}
+.lights i:nth-child(3) {
+  animation-delay: 1.2s;
+  animation-duration: 2.4s;
+}
+.lights i:nth-child(4) {
+  animation-delay: 1.8s;
+  animation-duration: 1.8s;
+}
+.lights i:nth-child(5) {
+  animation-delay: 2.4s;
+  animation-duration: 1.2s;
+}
+
+@keyframes light {
+  from {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 18px var(--red);
+  }
+  to {
+    background: var(--surface);
+    border-color: var(--line);
+    box-shadow: none;
+  }
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  padding: 12px 28px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #e10600;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #b80500;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateX(0);
+}
+
+.btn.ghost {
+  background-color: var(--surface);
+  color: var(--ink);
+  transition: color 0.3s ease-in-out;
+}
+
+.btn.ghost::before {
+  background-color: #e10600;
+}
+
+.btn.ghost:hover,
+.btn.ghost:focus-visible {
+  color: #ffffff;
+}
+
+section {
+  padding: 100px 0;
+  border-top: 1px solid var(--line);
+}
+
+section h2 {
+  margin-bottom: 40px;
+  font-size: 4rem;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 6px;
+  margin-top: 14px;
+  background: var(--red);
+  transform: skewX(-30deg);
+}
+
+.about p {
+  max-width: 670px;
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+}
+
+.proj {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 24px;
+  background: var(--surface);
+  border-top: 6px solid var(--red);
+  border-radius: 0 0 8px 8px;
+}
+
+.proj img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.proj h3 {
+  margin-bottom: 12px;
+  font-size: 1.9rem;
+}
+
+.proj p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.proj .btn {
+  margin-top: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 5px 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tyre {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.tyre b {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 6px solid var(--c);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.tyre h3 {
+  margin-bottom: 4px;
+  font-size: 1.75rem;
+}
+
+.tyre .tags {
+  margin-top: 8px;
+}
+
+
+.radio h3 {
+  font-size: 2.4rem;
+}
+
+.radio p {
+  margin: 8px 0 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.radio .mail {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  overflow-wrap: anywhere;
+}
+
+.radio .mail:hover {
+  color: var(--ink);
+}
+
+footer {
+  padding: 32px 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  nav a:not(.logo) {
+    display: none;
+  }
+  .hero {
+    padding: 48px 0 64px;
+  }
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+  section h2 {
+    font-size: 2.2rem;
+  }
+  .proj,
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  .radio h3 {
+    font-size: 1.7rem;
+  }
+  .radio .mail {
+    font-size: 1.2rem;
+  }
+}
+
