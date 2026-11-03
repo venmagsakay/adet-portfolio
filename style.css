@@ -9,7 +9,7 @@
   --yellow: #e8b800;
 }
 
-  :root[dark-theme="dark"]{
+  :root[data-theme="dark"]{
     color-scheme: dark;
     --bg: #15151e;
     --surface: #1f1f2b;
@@ -103,6 +103,20 @@ nav .logo::before {
   transform: skewX(-18deg);
 }
 
+.theme-toggle {
+  padding: 6px 12px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: "Red Hat Display";
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--red);
+}
 .hero {
   padding: 80px 0 96px;
 }

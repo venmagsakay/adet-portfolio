@@ -145,12 +145,14 @@
         toggle.textContent = isDark ? "☀" : "☾";
       }
 
-      toggle.addEventListener("click", () => {
+      toggle.addEventListener("click", function () {
         const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = next;
         localStorage.setItem("theme", next);
         showLabel();
       });
+
+      showLabel();
     </script>
   </body>
 </html>
